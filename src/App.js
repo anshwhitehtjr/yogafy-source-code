@@ -8,6 +8,7 @@ import Classes from "./Components/Classes";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
+import Scheduleclass from "./Components/ClassComponents/Scheduleclass";
 
 function App () {
   return (
@@ -28,6 +29,9 @@ function App () {
         </Route>
         <Route exact path='/signup'>
           <Signup />
+        </Route>
+        <Route exact path='/classes/scheduleclass'>
+          <Scheduleclass />
         </Route>
       </Switch>
     </Router>
