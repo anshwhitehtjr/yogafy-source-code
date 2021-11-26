@@ -47,9 +47,9 @@ router.post('/addclass', fetchuser, async (req, res) => {
 });
 //#endregion
 
-//#region ROUTE 3: Delete a Note using: DELETE "/api/notes/deletenote". Login required
+//#region ROUTE 3: Delete a Note using: DELETE "/api/notes/cancelclass/:id". Login required
 
-router.delete('/deletenote/:id', fetchuser, async (req, res) => {
+router.delete('/cancelclass/:id', fetchuser, async (req, res) => {
    try {
       // Find the Note to be deleted and delete it
       let classes = await Classes.findById(req.params.id);
@@ -61,7 +61,7 @@ router.delete('/deletenote/:id', fetchuser, async (req, res) => {
       }
 
       classes = await Classes.findByIdAndDelete(req.params.id);
-      res.send("The Note Has been deleted Successfully");
+      res.send("The Class Has been Cancelled Successfully");
    } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal Server Error Occurred");
@@ -69,4 +69,5 @@ router.delete('/deletenote/:id', fetchuser, async (req, res) => {
 });
 
 //#endregion
+
 module.exports = router;
