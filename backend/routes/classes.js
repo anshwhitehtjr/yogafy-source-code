@@ -1,13 +1,13 @@
 //#region namespaces
-const express = require('express')
-const router = express.Router()
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
-const { body, validationResult } = require('express-validator')
-const User = require('../model/User')
-const fetchuser = require('../middleware/fetchuser')
-const JWT_SECRET = "AnShBaLaJiThAkUrIsAgOoDbOOY123123"
-const Classes = require('../model/Classes')
+const express = require('express');
+const router = express.Router();
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const { body, validationResult } = require('express-validator');
+const User = require('../model/User');
+const fetchuser = require('../middleware/fetchuser');
+const JWT_SECRET = "AnShBaLaJiThAkUrIsAgOoDbOOY123123";
+const Classes = require('../model/Classes');
 //#endregion
 
 //#region ROUTE 1: Get All the Classes: GET "/api/classes/fetchallclasses". Login required
@@ -24,7 +24,7 @@ router.get('/fetchallclasses', fetchuser, async (req, res) => {
 //#region ROUTE 2: Add a new Class using: POST "/api/classes/addclass". Login required
 router.post('/addclass', fetchuser, async (req, res) => {
    try {
-      const { zoomid, title, desc } = req.body;
+      const { zoomid, title, desc, dateToJoin } = req.body;
 
       //#region Error handling
       const errors = validationResult(req);
@@ -34,7 +34,7 @@ router.post('/addclass', fetchuser, async (req, res) => {
       //#endregion
 
       const classes = new Classes({
-         zoomid, title, desc, user: req.user.id
+         zoomid, title, desc, dateToJoin, user: req.user.id
       });
 
       const savedClass = await classes.save();
