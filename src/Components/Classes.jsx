@@ -1,5 +1,4 @@
-import React from 'react';
-import { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 // import Classitem from './ClassComponents/Classitem';
 import Complete from './ClassComponents/Complete';
@@ -9,7 +8,11 @@ import classContext from './Context/classes/classContext';
 
 const Classes = () => {
    const context = useContext(classContext);
-   const { classes, setClasses } = context;
+   const { classes, getClasses } = context;
+
+   useEffect(() => {
+      getClasses()
+   }, []);
 
    return (
       <>
