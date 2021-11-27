@@ -3,6 +3,8 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 // import Classitem from './ClassComponents/Classitem';
 import Complete from './ClassComponents/Complete';
+import Remaining from './ClassComponents/Remaining';
+import Upcoming from './ClassComponents/Upcoming';
 import classContext from './Context/classes/classContext';
 
 const Classes = () => {
@@ -39,10 +41,22 @@ const Classes = () => {
                   </div>
                </div>
                <div className="tab-pane fade" id="nav-remainingclasses" role="tabpanel" aria-labelledby="nav-remainingclasses-tab">
-                  These Are InComplete Classes
+                  <div className="container my-3">
+                     {
+                        classes.map(class_ => {
+                           return <Remaining class_={ class_ } />;
+                        })
+                     }
+                  </div>
                </div>
                <div className="tab-pane fade" id="nav-upcomginclasses" role="tabpanel" aria-labelledby="nav-upcomginclasses-tab">
-                  These Are Upcoming Classes
+                  <div className="container my-3">
+                     {
+                        classes.map(class_ => {
+                           return <Upcoming class_={ class_ } />;
+                        })
+                     }
+                  </div>
                </div>
             </div>
          </div>

@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Classitem = (props) => {
+const Remaining = (props) => {
     const { title, zoomid, desc, dateToJoin, state } = props.class_;
 
     return (
         <>
             {
-                state === 'completed'
+                state === 'remaining'
                 && <div class="card" >
                     <h4 class="card-header">
                         { title }
@@ -27,4 +27,4 @@ const Classitem = (props) => {
     );
 };
 
-export default Classitem;
+export default Remaining;
