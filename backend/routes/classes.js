@@ -24,7 +24,7 @@ router.get('/fetchallclasses', fetchuser, async (req, res) => {
 //#region ROUTE 2: Add a new Class using: POST "/api/classes/addclass". Login required
 router.post('/addclass', fetchuser, async (req, res) => {
    try {
-      const { zoomid, title, desc, dateToJoin } = req.body;
+      const { zoomid, title, desc, dateToJoin, state } = req.body;
 
       //#region Error handling
       const errors = validationResult(req);
@@ -33,8 +33,12 @@ router.post('/addclass', fetchuser, async (req, res) => {
       }
       //#endregion
 
+      if (!(state === 'upcoming' || state === 'remaining' || state === 'completed')) {
+         res.status(500).send("Internal Server Error Occurred");
+      }
+
       const classes = new Classes({
-         zoomid, title, desc, dateToJoin, user: req.user.id
+         zoomid, title, desc, dateToJoin, state, user: req.user.id
       });
 
       const savedClass = await classes.save();

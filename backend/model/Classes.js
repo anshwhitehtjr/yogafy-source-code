@@ -21,6 +21,10 @@ const ClassesSchema = new mongoose.Schema({
       type: String,
       required: true
    },
+   state: {
+      type: String,
+      default: 'remaining'
+   },
    timestamp: {
       type: Date,
       default: Date.now

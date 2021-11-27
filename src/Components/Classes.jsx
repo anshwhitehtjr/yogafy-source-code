@@ -1,6 +1,8 @@
 import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+// import Classitem from './ClassComponents/Classitem';
+import Complete from './ClassComponents/Complete';
 import classContext from './Context/classes/classContext';
 
 const Classes = () => {
@@ -29,29 +31,11 @@ const Classes = () => {
             <div className="tab-content" id="nav-tabContent">
                <div className="tab-pane fade show active" id="nav-completedclasses" role="tabpanel" aria-labelledby="nav-completedclasses-tab">
                   <div className="container my-3">
-                     <div class="card">
-                        <h5 class="card-header">
-                           Your Latest upcoming Classe
-                        </h5>
-                        <div class="card-body">
-                           <h5 class="card-title">
-                              {
-                                 classes.map(e => {
-                                    return e.title;
-                                 })
-                              }
-                           </h5>
-                           <p class="card-text">
-                              {
-                                 classes.map(e => {
-
-                                    return e.dateToJoin;
-                                 })
-                              }
-                           </p>
-                           <a href={ `${classes.map(e => { return e.zoomid; })}` } target='_blank' class="btn btn-primary">Go somewhere</a>
-                        </div>
-                     </div>
+                     {
+                        classes.map(class_ => {
+                           return <Complete class_={ class_ } />;
+                        })
+                     }
                   </div>
                </div>
                <div className="tab-pane fade" id="nav-remainingclasses" role="tabpanel" aria-labelledby="nav-remainingclasses-tab">
